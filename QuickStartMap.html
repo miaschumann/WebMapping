@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset='utf-8' />
+    <title>University of Oregon Mapping</title>
+    <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+    <script src="https://api.mapbox.com/mapbox-gl-js/v3.20.0/mapbox-gl.js"></script>
+    
+
+
+          
+     <link href="https://api.mapbox.com/mapbox-gl-js/v3.20.0/mapbox-gl.css" rel="stylesheet">
+    
+
+    <style>
+         body { margin:0; padding:0; }
+         #map { position:absolute; top:0; bottom:0; width:100%; }
+         #banner { z-index: 9999; 
+         background-color:#FFC0CB; 
+         opacity: 70%; 
+         text-align: center 
+     }
+     
+        
+
+
+    </style>
+  </head>
+
+  <body>
+    <div id='map'></div>
+   
+         <div id='banner' >
+     		<h1>My Map of Portland: Outdoor Recreation</h1>
+     		<h2>By: Mia Schumann</h2>
+         
+ 	</div>
+
+    <script>
+        // Insert the JavaScript within the <script> tags, within the body   
+        mapboxgl.accessToken = 'pk.eyJ1IjoibWlhc2NodW1hbm4iLCJhIjoiY21uZmsxcXQ0MGEyazJwcTJzNGdsa2UwcCJ9.VpBtSt3Pk4kqqyfKeuhO7Q'
+ 
+   
+        var map = new mapboxgl.Map({
+     container: 'map', // id of a div on your page, where the map will be inserted
+     style: 'mapbox://styles/mapbox/outdoors-v12', // stylesheet location
+     center: [-122.6788, 45.5212], // starting position [lng, lat] eg. [-122.6788, 45.5212]
+     zoom: 11 // starting zoom 
+ });
+
+          map.addControl(new mapboxgl.NavigationControl({
+     showCompass: false
+ }), 'bottom-left');
+   
+         
+
+      var popup_layer_forestpark = new mapboxgl.Popup({
+       closeOnClick: false, anchor: 'top-left'
+     })
+     .setLngLat([-122.75107362661237, 45.55419326278049])
+     .setHTML('<a href="https://www.alltrails.com/parks/us/oregon/forest-park">Best Hikes in Forest Park</a>')
+     .addTo(map);
+
+     var popup_layer_tabor = new mapboxgl.Popup({
+       closeOnClick: false, anchor: 'top-left'
+     })
+     .setLngLat([-122.5956900721945, 45.51223825364398])
+     .setHTML('<a href="https://www.alltrails.com/parks/us/oregon/mount-tabor-city-park">Best Hikes at Mount Tabor</a>')
+     .addTo(map);
+
+        var marker2 = new mapboxgl.Marker({color:'#FFC0CB'})
+    .setLngLat([-122.75107362661237, 45.55419326278049]) // starting position [lng, lat] 
+    .addTo(map);
+
+     var marker3 = new mapboxgl.Marker({color:'#FFC0CB'})
+    .setLngLat([-122.5956900721945, 45.51223825364398]) // starting position [lng, lat] 
+    .addTo(map);
+
+        // Add optional advanced "On load" function here
+        
+    </script>
+
+  </body>
+
+</html>
