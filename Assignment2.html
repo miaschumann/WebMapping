@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+<body style="background-color: hsl(20, 100%, 75%);">
+  <head>
+    <meta charset='utf-8' />
+    <title>Assignment2</title>
+    <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+    <!--    1.1.  Include the reference to the Mapbox JavaScript here in the <head> of the page  -->
+      <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v3.2.0/mapbox-gl.js'></script>
+    <!--    1.2 Include the reference to the Mapbox CSS here in the <head> of the page  -->
+      <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v3.2.0/mapbox-gl.css' rel='stylesheet' />
+     
+      
+    <style>
+        /* 1.4 Insert the CSS code here between the <style> tags */
+        body { margin:50px; padding:0; }
+           #map1 { position:relative; height:300px; width:100%;}
+        /* 2.5.2 Insert additional CSS code here between the <style> tags */
+          #map2 { position:relative; height:300px; width:100%;}
+          #map3 { position:relative; height:300px; width:100%;}
+               
+         #banner h1 {
+        font-family: 'Courier New', Courier, monospace;
+        font-size: 40px;
+        color: #C04080;
+        }
+        h1{
+          font-family:'Courier New', Courier, monospace;
+          color: rgb(112, 44, 56);
+          font-size: 30px;
+        }
+
+        p{
+          font-family: 'Courier New', Courier, monospace;
+          color:rgb(144, 70, 5);
+          font-size: 20px;
+      }
+    </style>
+  </head>
+
+    <body style="background-color: hsl(20, 100%, 70%);">
+
+    <div id='banner'>
+      <h1>&#127925 Three Iconic Stops on Taylor Swift's Eras Tour &#10024 </h1>
+    </div>
+    </style>
+  </head>
+
+  <body>
+        <!-- 1.3 Insert the div for the structure of the page here in the <body> of the page -->
+   <h1>  &#49;&#65039;&#8419 London: Wembley Stadium</h1>
+   <p>Swift surpasses Michael Jackson's record of most Wembley Stadium shows during a single tour! Click on the yellow marker for more:</p>
+         <div id='map1'></div>
+   
+      <h1> 2&#65039;&#8419 Melbourne: Melbourne Cricket Ground</h1>
+      <p> Swift plays for the largest crowd of her entire career. Click the green marker for more:  </p>
+     <div id='map2'></div>
+
+      <h1> &#0051;&#65039;&#8419 Seattle: Lumen Field </h1>
+      <p> Fans dance so hard that they create record-breaking seismic activity, beating Seahawks fans previous records. Click on the blue marker for more:   </p>
+     <div id='map3'></div>
+        <script>
+            /* Insert the JavaScript within the <script> tags, within the body */
+            // 2.1 Start with the Mapbox access token
+             mapboxgl.accessToken = 'pk.eyJ1IjoibWlhc2NodW1hbm4iLCJhIjoiY21uZmsxcXQ0MGEyazJwcTJzNGdsa2UwcCJ9.VpBtSt3Pk4kqqyfKeuhO7Q';
+
+            // 2.2 Then initialize the first map
+               var map = new mapboxgl.Map({
+       container: 'map1', // id of a div on your page, where the map will be inserted
+       style: 'mapbox://styles/miaschumann/cmnsg07gc005301sreqyq532g', // the style URL 'mapbox://styles/mapbox/streets-v11' 
+       center: [-0.12776392111369492, 51.50969633227516], // starting position [lng, lat] eg. [-122.6788, 45.5212]
+       zoom: 10 // starting zoom 
+   });
+
+            // 2.3 Add any other variables (such as popups and markers) to the first map
+             var popup = new mapboxgl.Popup()
+                      .setText('London had the most Eras Tour performances in one city! There were eight sold out shows at Wembley Stadium, drawing nearly 700,000 fans.');
+
+                  var marker = new mapboxgl.Marker({color:'gold'})
+                    .setLngLat([ -0.2795747875130599, 51.55630150270996]) // starting position [lng, lat]
+                    .setPopup(popup) //add the popup named "popup" to this marker 
+		    .addTo(map); // add it to the map with the ID "map"
+
+
+            // 2.4 Add arguments to disable the map interactivity here
+            // Disable drag and zoom handlers.
+               // Disable drag and zoom handlers.
+               map.dragPan.disable();
+               map.scrollZoom.disable();
+               map.boxZoom.disable();
+               map.dragRotate.disable();
+               map.keyboard.disable();
+               map.doubleClickZoom.disable();
+               map.touchZoomRotate.disable();
+               map.touchZoomRotate.disableRotation();
+
+
+            // 2.5.3 Then initialize the 2nd map
+                
+         var map2 = new mapboxgl.Map({
+         container: 'map2', // id of a div on your page, where the map will be inserted
+         style: 'mapbox://styles/miaschumann/cmnsg07gc005301sreqyq532g', // stylesheet location
+         center: [144.95795556037115, -37.812234216961535], // starting position [lng, lat] eg. [-122.6788, 45.5212]
+         zoom: 12 // starting zoom 
+         });
+          // 2.5.4 Add any other variables (such as markers) to the second map
+         var popup2 = new mapboxgl.Popup()
+         .setText('Swift saw her largest audience at Melbourne Cricket Ground in Australia, where 96,000 fans packed the stadium!');
+
+         var marker2 = new mapboxgl.Marker({color:'chartreuse'})
+           .setLngLat([144.9834278423289, -37.81976773367506]) // starting position [lng, lat] 
+           .setPopup(popup2) //add the popup to the marker 
+           .addTo(map2); // id it to the map with the ID *map2*
+
+           
+
+
+            // 2.5.5 Add arguments to disable the second map's interactivity here
+                     // Disable drag and zoom handlers. 
+         map2.dragPan.disable();
+         map2.scrollZoom.disable();
+         map2.boxZoom.disable();
+         map2.dragRotate.disable();
+         map2.keyboard.disable();
+         map2.doubleClickZoom.disable();
+         map2.touchZoomRotate.disable();
+         map2.touchZoomRotate.disableRotation();
+
+      //map 3
+       // Then initialize the 2nd map
+         var map3 = new mapboxgl.Map({
+         container: 'map3', // id of a div on your page, where the map will be inserted
+         style: 'mapbox://styles/miaschumann/cmnsg07gc005301sreqyq532g', // stylesheet location
+         center: [ -122.33228898910464, 47.60325090977728], // starting position [lng, lat] eg. [-122.6788, 45.5212]
+         zoom: 12 // starting zoom 
+         });
+
+          var popup3 = new mapboxgl.Popup()
+         .setText('At Lumen Field in Seattle, Washington, fans caused seismic activity equivalent to a 2.3 magnitude earthquake. This event is now known as "Swift Quake", and occured largely during the song "Shake It Off"');
+
+         var marker3 = new mapboxgl.Marker({color:'aqua'})
+           .setLngLat([-122.33165012883555, 47.5953435311239]) // starting position [lng, lat] 
+           .setPopup(popup3) //add the popup to the marker 
+           .addTo(map3); // id it to the map with the ID *map2*
+
+              // Disable drag and zoom handlers. 
+         map3.dragPan.disable();
+         map3.scrollZoom.disable();
+         map3.boxZoom.disable();
+         map3.dragRotate.disable();
+         map3.keyboard.disable();
+         map3.doubleClickZoom.disable();
+         map3.touchZoomRotate.disable();
+         map3.touchZoomRotate.disableRotation();
+            
+            // 2.6 Change the map pointers
+  map.getCanvas().style.cursor = 'auto';
+	map2.getCanvas().style.cursor = 'auto';
+  map3.getCanvas().style.cursor = 'auto';
+        </script>
+  </body>
+</html>
