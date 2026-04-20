@@ -5,8 +5,8 @@
      <title>Owners vs Renters Map</title>
      <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
      <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-     <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v3.2.0/mapbox-gl.js'></script>
-     <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v3.2.0/mapbox-gl.css' rel='stylesheet' />
+     <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v3.20.0/mapbox-gl.js'></script>
+     <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v3.20.0/mapbox-gl.css' rel='stylesheet' />
      <style>
          /*  style for paragraph tags */
         p {
@@ -86,16 +86,13 @@
          body { margin:0; padding:0; }
          #map { position:absolute; top:0; bottom:0; width:100%; }
 
-    /* legend interaction - theres something not right with this */
-
-      
 
      </style>
  </head>
  <body>
 
    <div id='map'></div>
-  <!-- map description panel -->
+    <!-- adding map description panel -->
    <div class="descriptionPanel" id="descriptionPanel" style="height: 250px;">
     <span onClick=panelSelect() id="glyph" class="chevron glyphicon glyphicon-chevron-down"></span>
     <hr/>
@@ -104,7 +101,7 @@
        This is a map showing every single person in the Portland Area as a dot. Data is taken from the 2017 US Census, and is accurate at the level of a block; however, within each block location is randomized. Points are colored based on the number of homeowners versus renters on a block.
      </p>
    </div>
-  <!--legend-->
+    <!--adding legend-->
     <div class="LegendContainer">
      <div class="legendItem">
          <span class="owner">&#11044;</span>
@@ -117,6 +114,7 @@
     </div>
 
    <script>
+    // getting the map set up 
     mapboxgl.accessToken = 'pk.eyJ1IjoibWlhc2NodW1hbm4iLCJhIjoiY21uZmsxcXQ0MGEyazJwcTJzNGdsa2UwcCJ9.VpBtSt3Pk4kqqyfKeuhO7Q'; 
      var map = new mapboxgl.Map({
          container: 'map', // container id
@@ -130,6 +128,7 @@
     const nav = new mapboxgl.NavigationControl();
     map.addControl(nav, 'top-left');
 
+    //add the clicky interactive part of the button 
     var state = { panelOpen: true };
 
       function panelSelect(e) {
