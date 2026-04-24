@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset='utf-8' />
+    <title>Earthquakes in 2021</title>
+    <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+    <!--    reference to mapbox JS  -->
+      <script src="https://api.mapbox.com/mapbox-gl-js/v3.20.0/mapbox-gl.js"></script>
+
+
+          
+    <!--    reference to mapbox CSS -->
+     <link href="https://api.mapbox.com/mapbox-gl-js/v3.20.0/mapbox-gl.css" rel="stylesheet">
+
+    <style>
+        /* css map layout   */
+            body { margin:0; padding:0; background-color: #05020f; }
+            #map { position:absolute; top:100px; bottom:0; width:100%; }
+        /*here i used claude to get this banner style so the text would glow */
+            #banner { 
+            z-index: 9999; 
+            background-color: rgba(5, 2, 20, 0.85); 
+            text-align: center;
+            color: #c8b8e8;
+            padding: 10px 0 20px 0;  /* top, right, bottom, left */
+            text-shadow: 0 0 10px rgba(180, 130, 255, 0.7);
+        }
+
+
+   
+    </style>
+  </head>
+
+  <body>
+    <!--  map div  -->
+    <div id='map'></div>
+    <!--  title -->
+     <div id='banner'>
+     		<h1>Earthquakes in 2021</h1>
+ 	    </div>
+
+    <script>  
+      // mapbox access token
+      mapboxgl.accessToken = 'pk.eyJ1IjoibWlhc2NodW1hbm4iLCJhIjoiY21uZmsxcXQ0MGEyazJwcTJzNGdsa2UwcCJ9.VpBtSt3Pk4kqqyfKeuhO7Q';
+   
+      // initializing the map  
+      var map = new mapboxgl.Map({
+          container: 'map', // id of a div on your page, where the map will be inserted
+          style: 'mapbox://styles/miaschumann/cmoc1aeab002e01r4bpfp67oc', // stylesheet location
+          center: [-169.42070689759453, 43.904141313652666], // center
+          zoom: 2 // starting zoom 
+      });
+      // zoom controls 
+      map.addControl(new mapboxgl.NavigationControl({
+      showCompass: false
+     }), 'bottom-left');
+    
+        
+        
+    </script>
+   
+  </body>
+
+</html>
