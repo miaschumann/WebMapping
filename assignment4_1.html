@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset='utf-8' />
+    <title>County Temp Change</title>
+    <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+    <!--    reference to mapbox JS  -->
+      <script src="https://api.mapbox.com/mapbox-gl-js/v3.20.0/mapbox-gl.js"></script>
+
+
+          
+    <!--    reference to mapbox CSS -->
+     <link href="https://api.mapbox.com/mapbox-gl-js/v3.20.0/mapbox-gl.css" rel="stylesheet">
+
+    <style>
+        /* css map layout   */
+            body { margin:0; padding:0; }
+            #map { position:absolute; top:0; bottom:0; width:100%; }
+
+             #banner { z-index: 9999; 
+         background-color:rgb(44, 42, 146); 
+         opacity: 40%; 
+         text-align: center;
+         color: rgb(255, 255, 255)
+     }
+/*styling the legend, code this this adapted from claude*/
+        #legend {
+        position: absolute;
+        bottom: 30px;
+        right: 10px;
+        z-index: 9999;
+        background-color: rgb(113, 112, 142);
+        padding: 10px 15px;
+        border-radius: 5px;
+        font-family: Arial, sans-serif;
+        font-size: 13px;
+        line-height: 24px;
+    }
+
+    #legend h4 {
+        margin: 0 0 8px 0;
+        font-size: 14px;
+    }
+
+    .legend-item {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+
+    .legend-color {
+        width: 20px;
+        height: 20px;
+        border-radius: 3px;
+        display: inline-block;
+    }
+    </style>
+  </head>
+
+  <body>
+    <!--  map div  -->
+    <div id='map'></div>
+    <!--  title -->
+     <div id='banner'>
+     		<h1>Annual Temperature Change by County</h1>
+ 	    </div>
+
+    <script>  
+      // mapbox access token
+      mapboxgl.accessToken = 'pk.eyJ1IjoibWlhc2NodW1hbm4iLCJhIjoiY21uZmsxcXQ0MGEyazJwcTJzNGdsa2UwcCJ9.VpBtSt3Pk4kqqyfKeuhO7Q';
+   
+      // initializing the map  
+      var map = new mapboxgl.Map({
+          container: 'map', // id of a div on your page, where the map will be inserted
+          style: 'mapbox://styles/miaschumann/cmo962hv000ff01rg4ys719cu', // stylesheet location
+          center: [-99.12071073042335, 40.08877410684729], // center
+          zoom: 3.5 // starting zoom 
+      });
+      // zoom controls 
+      map.addControl(new mapboxgl.NavigationControl({
+      showCompass: false
+     }), 'bottom-left');
+    
+        
+        
+    </script>
+    // legend, code for this is adapted from claude 
+    <div id="legend">
+        <h4>Temp Change (°C)</h4>
+        <div class="legend-item">
+            <span class="legend-color" style="background-color: #67009e;"></span>
+            <span>-1°</span>
+        </div>
+        <div class="legend-item">
+            <span class="legend-color" style="background-color: #b9467a;"></span>
+            <span>0°</span>
+        </div>
+        <div class="legend-item">
+            <span class="legend-color" style="background-color: #d36d64;"></span>
+            <span>1°</span>
+        </div>
+        <div class="legend-item">
+            <span class="legend-color" style="background-color: #e89c4f;"></span>
+            <span>2°</span>
+        </div>
+        <div class="legend-item">
+            <span class="legend-color" style="background-color: #f2c936;"></span>
+            <span>3°</span>
+        </div>
+        <div class="legend-item">
+            <span class="legend-color" style="background-color: #eef91a;"></span>
+            <span>4°</span>
+        </div>
+    </div>
+  </body>
+
+</html>
